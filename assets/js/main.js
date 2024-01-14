@@ -13,6 +13,7 @@ let confirmDeleteBtn = document.querySelector(".deleteLayer__btns__delete")
 function openBox() {
     box.classList.remove("dnone")
     nameInput.focus();
+    nameInput.value = ""
 }
 
 function closeBox() {
@@ -25,7 +26,6 @@ function addNote() {
     DATA.push({ "name": name, "date": "26 Apr 2023" })
 
     renderNotes(DATA)
-    nameInput.value = ""
     closeBox();
 }
 
