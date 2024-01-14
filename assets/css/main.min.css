@@ -58,6 +58,7 @@ body {
   padding: 10%;
   -webkit-box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.19);
           box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.19);
+  position: relative;
 }
 .note__name {
   margin: 0;
@@ -66,6 +67,22 @@ body {
 .note__date {
   margin: 5px 0;
   font-size: 14px;
+}
+
+.deleteBtn {
+  width: 40px;
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  cursor: pointer;
+}
+.deleteBtn:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-transition: 300ms;
+  transition: 300ms;
 }
 
 .toolbar {
