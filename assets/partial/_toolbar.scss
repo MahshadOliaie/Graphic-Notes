@@ -1,0 +1,41 @@
+.toolbar {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5px;
+
+    &__search {
+        padding: 6px 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(228, 228, 228) ;
+        box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.19);
+
+        &::placeholder {
+            font-style: italic;
+        }
+
+        &:focus-visible{
+            outline: none;
+            border: 2px solid rgba(128, 0, 128, 0.376);
+        }
+    }
+
+    &__add {
+        background-color: green;
+        color: white;
+        padding: 7px 9px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 7px rgba(0, 74, 0, 0.56);
+        transition: 100ms;
+        cursor: pointer;
+
+        &:hover{
+            background-color: rgb(0, 107, 0);
+            transform: scale(1.01);
+            transition: 100ms;
+        }
+    }
+}
