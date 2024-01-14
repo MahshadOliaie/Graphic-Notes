@@ -66,6 +66,7 @@ body {
 .note__name {
   margin: 0;
   font-size: 27px;
+  width: 90%;
 }
 .note__date {
   margin: 5px 0;
