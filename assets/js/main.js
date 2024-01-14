@@ -10,6 +10,7 @@ let box = document.querySelector(".addBox")
 
 function openBox(){
     box.classList.remove("dnone")
+    nameInput.focus();
 }
 
 function closeBox(){
@@ -24,6 +25,13 @@ function addNote() {
     renderNotes(DATA)
     nameInput.value = ""
     closeBox();
+}
+
+
+function addHandler(evt) {
+    if (evt.key === 'Enter') {
+        addNote();
+    }
 }
 
 
@@ -43,3 +51,5 @@ function renderNotes(data) {
 
 
 renderNotes(DATA);
+
+box.addEventListener("keyup", addHandler);
