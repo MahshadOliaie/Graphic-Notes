@@ -1,49 +1,52 @@
-
-.notesContainer{
+.notesContainer {
     display: grid;
-    grid-template-columns: repeat(2 , 200px);
+    grid-template-columns: repeat(2, 200px);
     width: 100%;
     justify-content: center;
     gap: 20px;
 
 
     @media screen and (min-width:750px) {
-        grid-template-columns: repeat(3 , 200px);
+        grid-template-columns: repeat(3, 200px);
         gap: 25px;
     }
+
     @media screen and (min-width:1000px) {
-        grid-template-columns: repeat(4 , 200px);
+        grid-template-columns: repeat(4, 200px);
         gap: 30px;
     }
+
     @media screen and (min-width:1300px) {
-        grid-template-columns: repeat(5 , 200px);
+        grid-template-columns: repeat(5, 200px);
         gap: 35px;
     }
 }
 
 
 
-.note{
+.note {
     background-color: pink;
     height: 200px;
     border-radius: 30px;
     padding: 10%;
     box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.19);
     position: relative;
+    overflow: hidden;
+    transition: 300ms;
 
-    &__name{
+    &__name {
         margin: 0;
         font-size: 27px;
     }
 
-    &__date{
+    &__date {
         margin: 5px 0;
         font-size: 14px;
     }
 }
 
 
-.deleteBtn{
+.deleteBtn {
     width: 40px;
     position: absolute;
     right: 10%;
@@ -51,9 +54,64 @@
     transition: 300ms;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         transform: scale(1.04);
         transition: 300ms;
     }
 
+    & g{
+        pointer-events: none;
+    }
+
+}
+
+
+.deleteLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 224, 138);
+    transform: scaleX(-1);
+    transition: 300ms;
+
+    &__btns {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+
+        & button{
+            border: none;
+            padding: 6px 10px;
+            border-radius: 7px;
+            transition: 300ms;
+            cursor: pointer;
+
+            &:hover{
+                transform: scale(1.04);
+                transition: 300ms;
+            }
+        }
+
+        &__delete{
+            background-color: rgb(216, 54, 54);
+            color: white;
+        }
+
+        &__cancel{
+            background-color: rgb(188, 188, 188);
+        }
+    }
+}
+
+
+.flip{
+    transform: scaleX(-1);
+    transition: 300ms;
 }
