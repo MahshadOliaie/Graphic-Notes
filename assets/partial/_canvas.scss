@@ -16,6 +16,7 @@
         border: none;
         font-size: 25px;
         margin: 20px 0;
+        font-weight: 600;
 
         &:focus-visible{
             outline: none;
@@ -28,17 +29,21 @@
     width: 100%;
     height: 75vh;
     margin-top: 30px;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #drawing-board{
     width: 100%;
     height: 100%;
-    background-color: whitesmoke;
+    
 }
 
 
 
-.clearBtn{
+#clearBtn{
     background-color: rgb(82, 156, 213);
     border: none;
     padding: 5px 10px;

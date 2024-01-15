@@ -33,6 +33,7 @@
     position: relative;
     overflow: hidden;
     transition: 300ms;
+    cursor: pointer;
 
     &__name {
         margin: 0;
@@ -43,6 +44,10 @@
     &__date {
         margin: 5px 0;
         font-size: 14px;
+    }
+
+    &:hover{
+        box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.535);
     }
 }
 
