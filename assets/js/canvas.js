@@ -35,10 +35,11 @@ function draw(noteId) {
     ctx.lineWidth = lineWidth;
     ctx.lineCap = 'round';
 
-    ctx.lineTo(event.clientX - canvasOffsetX , event.clientY);
+    ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
+    ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
     ctx.stroke();
 
-    let content = { "x": event.clientX - canvasOffsetX, "y": event.clientY, "color": ctx.strokeStyle }
+    let content = { "x": event.clientX - canvasOffsetX, "y": event.clientY - canvas.offsetTop, "color": ctx.strokeStyle }
 
     DATA.map(item => {
         if (item.canvasID == noteId) {
@@ -66,7 +67,7 @@ function drawFromData(note) {
             ctx.lineTo(item.x, item.y);
             ctx.stroke();
         })
-
+        
     }
 }
 

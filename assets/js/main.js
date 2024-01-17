@@ -104,8 +104,8 @@ function showNote(note) {
     ctx = canvas.getContext('2d');
     canvasOffsetX = canvas.offsetLeft;
     canvasOffsetY = canvas.offsetTop;
-    canvas.width = window.innerWidth - canvasOffsetX;
-    canvas.height = window.innerHeight - canvasOffsetY;
+    canvas.width = window.innerWidth - canvasOffsetX - 50;
+    canvas.height = window.innerHeight - canvasOffsetY - 50;
 
     drawFromData(note)
 
