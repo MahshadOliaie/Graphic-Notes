@@ -124,18 +124,20 @@ function showNote(note) {
     canvas.addEventListener('mousemove', function () { draw(canvasID) });
 
     canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
         isPainting = true;
         startX = e.clientX;
         startY = e.clientY;
     });
 
     canvas.addEventListener('touchend', e => {
+        e.preventDefault();
         isPainting = false;
         ctx.stroke();
         ctx.beginPath();
     });
 
-    canvas.addEventListener('touchmove', function () { draw(canvasID) });
+    canvas.addEventListener('touchmove', function () {e.preventDefault(); draw(canvasID) });
 
 
 }
