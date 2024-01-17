@@ -35,7 +35,7 @@ function draw(noteId) {
     ctx.lineWidth = lineWidth;
     ctx.lineCap = 'round';
 
-    ctx.lineTo(event.clientX - canvasOffsetX, event.clientY);
+    ctx.lineTo(event.clientX - canvasOffsetX , event.clientY);
     ctx.stroke();
 
     let content = { "x": event.clientX - canvasOffsetX, "y": event.clientY, "color": ctx.strokeStyle }
