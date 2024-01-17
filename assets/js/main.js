@@ -26,7 +26,7 @@ function addNote() {
     var hue = Math.floor(Math.random() * 360);
     var pastel = 'hsl(' + hue + ', 90%, 85%)';
     let id = DATA[DATA.length - 1].canvasID + 1
-    DATA.push({ "canvasID": id, "name": name, "date": "26 Apr 2023", "bgColor": pastel })
+    DATA.push({"bgColor": pastel , "name": name, "canvasID": id, "date": "26 Apr 2023", "content":[]})
 
     renderNotes(DATA)
     closeBox();
@@ -82,9 +82,9 @@ function showNote(note) {
         <input class="artContainer__title" value="${name}">
         <span>
             <label for="stroke">Color</label>
-            <input id="strokeColor" name='stroke' type="color">
+            <input id="strokeColor" name='stroke' type="color" onchange="changeColor()"> 
         </span>
-        <button id="clearBtn">Clear</button>
+        <button id="clearBtn" onclick="clearArt()">Clear</button>
     </div>
     <div class="drawing-board">
         <canvas id="drawing-board"></canvas>
@@ -92,6 +92,31 @@ function showNote(note) {
 </section>`
 
     document.body.innerHTML = template;
+    canvas = document.getElementById('drawing-board');
+    toolbar = document.querySelector('.artContainer__tools');
+    ctx = canvas.getContext('2d');
+    canvasOffsetX = canvas.offsetLeft;
+    canvasOffsetY = canvas.offsetTop;
+    canvas.width = window.innerWidth - canvasOffsetX;
+    canvas.height = window.innerHeight - canvasOffsetY;
+
+    drawFromData(note)
+
+    canvas.addEventListener('mousedown', (e) => {
+        isPainting = true;
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    canvas.addEventListener('mouseup', e => {
+        isPainting = false;
+        ctx.stroke();
+        ctx.beginPath();
+    });
+
+    canvas.addEventListener('mousemove', function () { draw(note) });
+
+
 }
 
 
