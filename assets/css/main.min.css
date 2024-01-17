@@ -322,6 +322,7 @@ body {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  position: relative;
 }
 .artContainer__title {
   width: 100%;
@@ -380,4 +381,19 @@ body {
 }
 #strokeColor::-webkit-color-swatch {
   border-radius: 50%;
+}
+
+.backBtn {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  cursor: pointer;
+}
+.backBtn:hover {
+  -webkit-transform: translate(-10px);
+          transform: translate(-10px);
+  -webkit-transition: 300ms;
+  transition: 300ms;
 }/*# sourceMappingURL=main.min.css.map */

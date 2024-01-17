@@ -25,7 +25,13 @@ function addNote() {
     let name = nameInput.value;
     var hue = Math.floor(Math.random() * 360);
     var pastel = 'hsl(' + hue + ', 90%, 85%)';
-    let id = DATA[DATA.length - 1].canvasID + 1
+    let id;
+    if (DATA.length == 0)
+        id = 1
+    else
+        id = DATA[DATA.length - 1].canvasID + 1
+
+
     DATA.push({ "bgColor": pastel, "name": name, "canvasID": id, "date": "26 Apr 2023", "content": [] })
     localStorage.setItem("DATA", JSON.stringify(DATA))
     renderNotes(DATA)
@@ -79,6 +85,7 @@ function showNote(note) {
     const { name, canvasID } = note
     let template = `<section class="artContainer">
     <div class="artContainer__tools">
+    <svg xmlns="http://www.w3.org/2000/svg" height="25" width="20" viewBox="0 0 320 512" class="backBtn" onclick="refresh()"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         <input class="artContainer__title" value="${name}">
         <span>
             <label for="stroke">Color</label>
@@ -122,12 +129,14 @@ function showNote(note) {
 
 
 function deleteFn() {
+    event.stopPropagation()
     let thisNote = event.target.parentNode.lastElementChild;
     thisNote.classList.remove("dnone")
     event.target.parentNode.classList.add("flip");
 }
 
 function cancelDeleting() {
+    event.stopPropagation()
     event.target.parentNode.parentNode.classList.add("dnone")
     event.target.parentNode.parentNode.parentNode.classList.remove("flip")
 }
@@ -140,6 +149,9 @@ function confirmDelete(index) {
 }
 
 
+function refresh() {
+    window.location.reload(true);
+}
 
 renderNotes(DATA);
 

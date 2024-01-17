@@ -31,6 +31,7 @@ function draw(noteId) {
         return;
     }
 
+    ctx.strokeStyle = document.getElementById("strokeColor").value
     ctx.lineWidth = lineWidth;
     ctx.lineCap = 'round';
 
@@ -53,13 +54,18 @@ function draw(noteId) {
 function drawFromData(note) {
     let lines = note.content;
     if (lines.length > 0) {
-        ctx.beginPath();
-        ctx.lineWidth = 5;
-        ctx.moveTo(lines[0].x, lines[0].y);
-        lines.map(item => {
-            ctx.lineTo(item.x, item.y);
+        lines.map((item, index) => {
+            ctx.beginPath();
             ctx.strokeStyle = item.color;
+            ctx.lineWidth = 5;
+            console.log(lines[index - 1])
+            if (index - 1 == -1) 
+                ctx.moveTo(lines[0].x, lines[0].y);
+           else
+                ctx.moveTo(lines[index - 1].x, lines[index - 1].y);
+            ctx.lineTo(item.x, item.y);
+            ctx.stroke();
         })
-        ctx.stroke();
+
     }
 }
