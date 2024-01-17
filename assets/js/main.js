@@ -7,6 +7,18 @@ let cancelBtn = document.querySelector(".addBox__btns__cancel");
 let box = document.querySelector(".addBox")
 let cancelDeletingBtn = document.querySelector(".deleteLayer__btns__cancel")
 let confirmDeleteBtn = document.querySelector(".deleteLayer__btns__delete")
+let dateString = "";
+
+
+
+function date(){
+    let d = new Date();
+    let year = d.getFullYear();
+    let monthList = ["Jan" , "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug" , "Sep" ,"Oct" , "Dec"]
+    let month = monthList[d.getMonth()]
+    let day = d.getDate()
+    dateString = `${day} ${month} ${year}`
+ }
 
 
 
@@ -31,8 +43,9 @@ function addNote() {
     else
         id = DATA[DATA.length - 1].canvasID + 1
 
+    date();    
 
-    DATA.push({ "bgColor": pastel, "name": name, "canvasID": id, "date": "26 Apr 2023", "content": [] })
+    DATA.push({ "bgColor": pastel, "name": name, "canvasID": id, "date": dateString , "content": [] })
     localStorage.setItem("DATA", JSON.stringify(DATA))
     renderNotes(DATA)
     closeBox();
@@ -172,3 +185,4 @@ function refresh() {
 renderNotes(DATA);
 
 box.addEventListener("keyup", addHandler);
+

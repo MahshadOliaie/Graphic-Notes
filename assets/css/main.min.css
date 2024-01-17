@@ -398,8 +398,8 @@ body {
   cursor: pointer;
 }
 .backBtn:hover {
-  -webkit-transform: translate(-10px);
-          transform: translate(-10px);
+  -webkit-transform: translate(-5px);
+          transform: translate(-5px);
   -webkit-transition: 300ms;
   transition: 300ms;
 }/*# sourceMappingURL=main.min.css.map */
