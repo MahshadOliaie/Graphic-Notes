@@ -20,6 +20,11 @@
         grid-template-columns: repeat(5, 200px);
         gap: 35px;
     }
+
+    @media screen and (max-width:460px) {
+        grid-template-columns: repeat(1, 300px);
+        gap: 25px;
+    }
 }
 
 
