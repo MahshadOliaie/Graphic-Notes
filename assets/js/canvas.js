@@ -59,13 +59,25 @@ function drawFromData(note) {
             ctx.strokeStyle = item.color;
             ctx.lineWidth = 5;
             console.log(lines[index - 1])
-            if (index - 1 == -1) 
+            if (index - 1 == -1)
                 ctx.moveTo(lines[0].x, lines[0].y);
-           else
+            else
                 ctx.moveTo(lines[index - 1].x, lines[index - 1].y);
             ctx.lineTo(item.x, item.y);
             ctx.stroke();
         })
 
     }
+}
+
+
+function changeName(noteId) {
+    let name = event.target.value;
+    DATA.map(item => {
+        if (item.canvasID == noteId) {
+            item.name = name;
+        }
+    })
+    localStorage.setItem("DATA", JSON.stringify(DATA))
+
 }
