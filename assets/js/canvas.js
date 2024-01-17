@@ -9,8 +9,14 @@ let startY;
 
 
 
-function clearArt() {
+function clearArt(noteId) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    DATA.map(item => {
+        if (item.canvasID == noteId) {
+            item.content = [];
+        }
+    })
+    localStorage.setItem("DATA", JSON.stringify(DATA))
 }
 
 
@@ -20,7 +26,7 @@ function changeColor() {
 }
 
 
-function draw(note) {
+function draw(noteId) {
     if (!isPainting) {
         return;
     }
@@ -34,11 +40,11 @@ function draw(note) {
     let content = { "x": event.clientX - canvasOffsetX, "y": event.clientY, "color": ctx.strokeStyle }
 
     DATA.map(item => {
-        if (item.canvasID == note.canvasID) {
+        if (item.canvasID == noteId) {
             item.content.push(content)
         }
     })
-    console.log(DATA)
+    localStorage.setItem("DATA", JSON.stringify(DATA))
 
 }
 

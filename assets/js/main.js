@@ -26,8 +26,8 @@ function addNote() {
     var hue = Math.floor(Math.random() * 360);
     var pastel = 'hsl(' + hue + ', 90%, 85%)';
     let id = DATA[DATA.length - 1].canvasID + 1
-    DATA.push({"bgColor": pastel , "name": name, "canvasID": id, "date": "26 Apr 2023", "content":[]})
-
+    DATA.push({ "bgColor": pastel, "name": name, "canvasID": id, "date": "26 Apr 2023", "content": [] })
+    localStorage.setItem("DATA", JSON.stringify(DATA))
     renderNotes(DATA)
     closeBox();
 }
@@ -76,7 +76,7 @@ function openNote(id) {
 
 
 function showNote(note) {
-    const { name } = note
+    const { name, canvasID } = note
     let template = `<section class="artContainer">
     <div class="artContainer__tools">
         <input class="artContainer__title" value="${name}">
@@ -84,7 +84,7 @@ function showNote(note) {
             <label for="stroke">Color</label>
             <input id="strokeColor" name='stroke' type="color" onchange="changeColor()"> 
         </span>
-        <button id="clearBtn" onclick="clearArt()">Clear</button>
+        <button id="clearBtn" onclick="clearArt(${canvasID})">Clear</button>
     </div>
     <div class="drawing-board">
         <canvas id="drawing-board"></canvas>
@@ -114,7 +114,7 @@ function showNote(note) {
         ctx.beginPath();
     });
 
-    canvas.addEventListener('mousemove', function () { draw(note) });
+    canvas.addEventListener('mousemove', function () { draw(canvasID) });
 
 
 }
@@ -135,6 +135,7 @@ function cancelDeleting() {
 
 function confirmDelete(index) {
     DATA.splice(index, 1);
+    localStorage.setItem("DATA", JSON.stringify(DATA))
     renderNotes(DATA)
 }
 
