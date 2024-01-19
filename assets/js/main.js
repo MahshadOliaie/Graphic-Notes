@@ -124,8 +124,8 @@ function showNote(note) {
 
     canvas.addEventListener('mousedown', (e) => {
         isPainting = true;
-        startX = e.clientX;
-        startY = e.clientY;
+        ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
+
     });
 
     canvas.addEventListener('mouseup', e => {

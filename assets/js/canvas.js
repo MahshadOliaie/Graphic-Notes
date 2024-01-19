@@ -35,7 +35,7 @@ function draw(noteId) {
     ctx.lineWidth = lineWidth;
     ctx.lineCap = 'round';
 
-    ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
+    
     ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
     ctx.stroke();
 
