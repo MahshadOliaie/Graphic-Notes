@@ -59,6 +59,13 @@ function addHandler(evt) {
 }
 
 
+function search(){
+    let value = event.target.value;
+    let filteredData = DATA.filter(item => {return item.name.includes(value)})
+    renderNotes(filteredData)
+}
+
+
 function renderNotes(data) {
     let template = data.map((item, index) => {
         const { name, canvasID, date, bgColor } = item;
