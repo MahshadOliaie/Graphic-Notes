@@ -83,14 +83,15 @@ function changeName(noteId) {
 
 
 function showNote(note) {
-    const { name, canvasID} = note
+    const { name, canvasID, content } = note
+    console.log(content)
     let template = `<section class="artContainer">
     <div class="artContainer__tools">
     <svg xmlns="http://www.w3.org/2000/svg" height="25" width="20" viewBox="0 0 320 512" class="backBtn" onclick="refresh()"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         <input class="artContainer__title" value="${name}" onchange="changeName(${canvasID})">
         <span>
             <label for="stroke">Color</label>
-            <input id="strokeColor" name='stroke' type="color" onchange="changeColor()"> 
+            <input id="strokeColor" name='stroke' type="color" onchange="changeColor()" > 
         </span>
         <span>
         <button id="undoBtn" onclick="undo(${canvasID})">Undo</button>
@@ -112,8 +113,8 @@ function showNote(note) {
     canvas.height = window.innerHeight - canvasOffsetY - 50;
 
     drawFromData(note)
-    
-    
+
+
 
     canvas.addEventListener('mousedown', (e) => {
         isPainting = true;
@@ -133,7 +134,7 @@ function showNote(note) {
 
         ctx.stroke();
         ctx.beginPath();
-    
+
     });
 
     canvas.addEventListener('mousemove', function () { draw(canvasID) });
@@ -157,11 +158,13 @@ function showNote(note) {
 }
 
 
-function undo(noteId){
+function undo(noteId) {
+    let color;
     DATA.map(item => {
         if (item.canvasID == noteId) {
-            item.content.pop()
+            color = item.content.pop()
             showNote(item)
+            document.getElementById("strokeColor").value = color[0].color
         }
     })
     localStorage.setItem("DATA", JSON.stringify(DATA))
