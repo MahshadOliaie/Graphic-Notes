@@ -100,66 +100,6 @@ function openNote(id) {
 
 
 
-function showNote(note) {
-    const { name, canvasID } = note
-    let template = `<section class="artContainer">
-    <div class="artContainer__tools">
-    <svg xmlns="http://www.w3.org/2000/svg" height="25" width="20" viewBox="0 0 320 512" class="backBtn" onclick="refresh()"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
-        <input class="artContainer__title" value="${name}" onchange="changeName(${canvasID})">
-        <span>
-            <label for="stroke">Color</label>
-            <input id="strokeColor" name='stroke' type="color" onchange="changeColor()"> 
-        </span>
-        <button id="clearBtn" onclick="clearArt(${canvasID})">Clear</button>
-    </div>
-    <div class="drawing-board">
-        <canvas id="drawing-board"></canvas>
-    </div>
-</section>`
-
-    document.body.innerHTML = template;
-    canvas = document.getElementById('drawing-board');
-    toolbar = document.querySelector('.artContainer__tools');
-    ctx = canvas.getContext('2d');
-    canvasOffsetX = canvas.offsetLeft;
-    canvasOffsetY = canvas.offsetTop;
-    canvas.width = window.innerWidth - canvasOffsetX - 50;
-    canvas.height = window.innerHeight - canvasOffsetY - 50;
-
-    drawFromData(note)
-
-    canvas.addEventListener('mousedown', (e) => {
-        isPainting = true;
-        ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
-
-    });
-
-    canvas.addEventListener('mouseup', e => {
-        isPainting = false;
-        ctx.stroke();
-        ctx.beginPath();
-    });
-
-    canvas.addEventListener('mousemove', function () { draw(canvasID) });
-
-    canvas.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        isPainting = true;
-        ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
-    });
-
-    canvas.addEventListener('touchend', e => {
-        e.preventDefault();
-        isPainting = false;
-        ctx.stroke();
-        ctx.beginPath();
-    });
-
-    canvas.addEventListener('touchmove', function () {e.preventDefault(); draw(canvasID) });
-
-
-}
-
 
 
 function deleteFn() {
