@@ -139,8 +139,7 @@ function showNote(note) {
     canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
         isPainting = true;
-        startX = e.clientX;
-        startY = e.clientY;
+        ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
     });
 
     canvas.addEventListener('touchend', e => {
