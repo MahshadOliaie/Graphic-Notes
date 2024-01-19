@@ -92,8 +92,10 @@ function showNote(note) {
             <label for="stroke">Color</label>
             <input id="strokeColor" name='stroke' type="color" onchange="changeColor()"> 
         </span>
-        <button id="clearBtn" onclick="undo(${canvasID})">Undo</button>
+        <span>
+        <button id="undoBtn" onclick="undo(${canvasID})">Undo</button>
         <button id="clearBtn" onclick="clearArt(${canvasID})">Clear</button>
+        </span>
     </div>
     <div class="drawing-board">
         <canvas id="drawing-board"></canvas>

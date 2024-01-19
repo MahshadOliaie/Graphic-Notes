@@ -387,6 +387,21 @@ button {
           transform: scale(1.03);
 }
 
+#undoBtn {
+  background-color: rgb(112, 112, 112);
+  border: none;
+  padding: 5px 10px;
+  -webkit-box-shadow: 0px 5px 7px rgba(122, 122, 122, 0.807);
+          box-shadow: 0px 5px 7px rgba(122, 122, 122, 0.807);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+#undoBtn:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
 #strokeColor {
   width: 40px;
   height: 40px;
