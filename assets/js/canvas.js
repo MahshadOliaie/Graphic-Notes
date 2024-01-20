@@ -24,7 +24,7 @@ function changeColor() {
 }
 
 
-function draw(noteId) {
+function draw() {
     if (!isPainting) {
         return;
     }
@@ -137,7 +137,7 @@ function showNote(note) {
 
     });
 
-    canvas.addEventListener('mousemove', function () { draw(canvasID) });
+    canvas.addEventListener('mousemove', function () { draw() });
 
     canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
@@ -152,7 +152,7 @@ function showNote(note) {
         ctx.beginPath();
     });
 
-    canvas.addEventListener('touchmove', function () { e.preventDefault(); draw(canvasID) });
+    canvas.addEventListener('touchmove', function () { e.preventDefault(); draw() });
 
 
 }
