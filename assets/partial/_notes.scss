@@ -127,3 +127,20 @@
     transform: scaleX(-1);
     transition: 300ms;
 }
+
+
+.hint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    opacity: .8;
+    color: rgb(72, 72, 72);
+    grid-column-start: 1;
+    grid-column-end: 3;
+    
+    & img{
+        width: 40px;
+        margin: 0 3px;
+    }
+}

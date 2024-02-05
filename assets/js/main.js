@@ -8,16 +8,16 @@ let box = document.querySelector(".addBox")
 let cancelDeletingBtn = document.querySelector(".deleteLayer__btns__cancel")
 let confirmDeleteBtn = document.querySelector(".deleteLayer__btns__delete")
 let dateString = "";
-const monthList = ["Jan" , "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug" , "Sep" ,"Oct" , "Dec"]
+const monthList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Dec"]
 
 
-function date(){
+function date() {
     let d = new Date();
     let year = d.getFullYear();
     let month = monthList[d.getMonth()]
     let day = d.getDate()
     dateString = `${day} ${month} ${year}`
- }
+}
 
 
 
@@ -42,9 +42,9 @@ function addNote() {
     else
         id = DATA[DATA.length - 1].canvasID + 1
 
-    date();    
+    date();
 
-    DATA.push({ "bgColor": pastel, "name": name, "canvasID": id, "date": dateString , "content": [] })
+    DATA.push({ "bgColor": pastel, "name": name, "canvasID": id, "date": dateString, "content": [] })
     localStorage.setItem("DATA", JSON.stringify(DATA))
     renderNotes(DATA)
     closeBox();
@@ -58,17 +58,22 @@ function addHandler(evt) {
 }
 
 
-function search(){
+function search() {
     let value = event.target.value;
-    let filteredData = DATA.filter(item => {return item.name.includes(value)})
+    let filteredData = DATA.filter(item => { return item.name.includes(value) })
     renderNotes(filteredData)
 }
 
 
 function renderNotes(data) {
-    let template = data.map((item, index) => {
-        const { name, canvasID, date, bgColor } = item;
-        return `
+
+    if (data.length == 0)
+        root.innerHTML = '<p class="hint">tab <img src="/assets/images/new.jpeg"/> to add a new note</p>'
+
+    else {
+        let template = data.map((item, index) => {
+            const { name, canvasID, date, bgColor } = item;
+            return `
         <div class="note" style="background-color: ${bgColor}" onclick="openNote(${canvasID})">
           <h1 class="note__name">${name}</h1>
           <p class="note__date">${date}</p>
@@ -81,9 +86,10 @@ function renderNotes(data) {
          </div>
           </div>
         </div>`
-    }).join("");
+        }).join("");
 
-    root.innerHTML = template;
+        root.innerHTML = template;
+    }
 }
 
 
